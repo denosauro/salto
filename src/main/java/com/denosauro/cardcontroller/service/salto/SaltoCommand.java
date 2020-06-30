@@ -1,6 +1,7 @@
 package com.denosauro.cardcontroller.service.salto;
 
 import lombok.Data;
+import org.springframework.util.StringUtils;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class SaltoCommand {
         result.add(SaltoConstants.FIELD_SEPARATOR);
 
         for (String field : fields) {
-            if (field != null && !field.isBlank()) {
+            if (!StringUtils.isEmpty(field)) {
                 convertStringAndAdd(result, field);
             }
             
