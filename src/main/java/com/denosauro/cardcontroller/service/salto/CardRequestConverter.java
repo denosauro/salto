@@ -26,11 +26,11 @@ public class CardRequestConverter implements Converter<CardRequest, SaltoCommand
         }
         
         if(source.getStartDate() != null) {
-            command.getFields()[8] = SaltoDate.of(new Date(source.getStartDate())).getValue();
+            command.getFields()[9] = SaltoDate.of(new Date(source.getStartDate())).getValue();
         }
 
         if(source.getEndDate() != null) {
-            command.getFields()[9] = SaltoDate.of(new Date(source.getEndDate())).getValue();
+            command.getFields()[10] = SaltoDate.of(new Date(source.getEndDate())).getValue();
         }
         
         return command;
