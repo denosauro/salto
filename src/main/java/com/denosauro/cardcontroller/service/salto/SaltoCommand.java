@@ -1,7 +1,7 @@
 package com.denosauro.cardcontroller.service.salto;
 
+import io.micrometer.core.instrument.util.StringUtils;
 import lombok.Data;
-import org.springframework.util.StringUtils;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class SaltoCommand {
         List<Byte> result = new ArrayList<>();
         result.add(SaltoConstants.STX);
         result.add(SaltoConstants.FIELD_SEPARATOR);
-        
+
         convertStringAndAdd(result, type.getValue());
         result.add(SaltoConstants.FIELD_SEPARATOR);
 
@@ -28,13 +28,13 @@ public class SaltoCommand {
             if (!StringUtils.isEmpty(field)) {
                 convertStringAndAdd(result, field);
             }
-            
+
             result.add(SaltoConstants.FIELD_SEPARATOR);
         }
-        
+
         result.add(SaltoConstants.ETX);
         result.add(SaltoConstants.DUMMY_LRC);
-        
+
         return result.toArray(new Byte[0]);
     }
 
@@ -44,5 +44,27 @@ public class SaltoCommand {
         for (byte fieldByte : fieldBytes) {
             result.add(fieldByte);
         }
+    }
+
+    public String toString(){
+        String result = new String();
+        result += "STX";
+        result += "|";
+
+        result += type;
+        result += "|";
+
+        for (String field : fields) {
+            if (!StringUtils.isEmpty(field)) {
+                result += field;
+            }
+
+            result+= "|";
+        }
+
+        result += "ETX";
+        result += "LRC";
+
+        return result;
     }
 }

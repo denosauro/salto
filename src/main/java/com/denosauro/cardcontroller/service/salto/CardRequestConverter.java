@@ -20,19 +20,25 @@ public class CardRequestConverter implements Converter<CardRequest, SaltoCommand
     public SaltoCommand convert(CardRequest source) {
         SaltoCommand command = new SaltoCommand(SaltoCommandType.CN);
         command.getFields()[0] = String.valueOf(source.getCardsAmount());
-        
+
+        command.getFields()[1] = "E";
+
         if(!StringUtils.isEmpty(source.getRoom())) {
             command.getFields()[2] = source.getRoom();
         }
-        
+
         if(source.getStartDate() != null) {
-            command.getFields()[8] = SaltoDate.of(new Date(source.getStartDate())).getValue();
+            command.getFields()[9] = SaltoDate.of(new Date(source.getStartDate())).getValue();
         }
 
         if(source.getEndDate() != null) {
-            command.getFields()[9] = SaltoDate.of(new Date(source.getEndDate())).getValue();
+            command.getFields()[10] = SaltoDate.of(new Date(source.getEndDate())).getValue();
         }
-        
+
+        if(source.getGuestName() != null){
+            command.getFields()[12] = source.getGuestName();
+        }
+
         return command;
     }
 }
