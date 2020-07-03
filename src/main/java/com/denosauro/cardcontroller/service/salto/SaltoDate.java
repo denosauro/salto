@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -25,7 +26,7 @@ public class SaltoDate {
         return new SaltoDate(new SimpleDateFormat(PATTERN).format(date));
     }
 
-    public static void main(String ...args) {
+    public static void main(String ...args) throws IOException {
         System.out.println("result : "+ SaltoDate.of(new Date()));
 
         CardRequest cardRequest = new CardRequest();
@@ -40,5 +41,7 @@ public class SaltoDate {
         SaltoCommand saltoCommand = cardRequestConverter.convert(cardRequest);
 
         System.out.println(saltoCommand.toString());
+
+        SaltoClient.execute("localhost", 6868, saltoCommand);
     }
 }
