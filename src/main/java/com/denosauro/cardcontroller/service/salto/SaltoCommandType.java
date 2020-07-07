@@ -8,5 +8,5 @@ public enum SaltoCommandType {
     CN("CN");
     
     @Getter
-    private String value;
+    private final String value;
 }

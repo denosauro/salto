@@ -1,7 +1,7 @@
 package com.denosauro.cardcontroller.service.salto;
 
-import io.micrometer.core.instrument.util.StringUtils;
 import lombok.Data;
+import org.springframework.util.StringUtils;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -47,24 +47,24 @@ public class SaltoCommand {
     }
 
     public String toString(){
-        String result = new String();
-        result += "STX";
-        result += "|";
+        StringBuilder result = new StringBuilder();
+        result.append("STX");
+        result.append("|");
 
-        result += type;
-        result += "|";
+        result.append(type);
+        result.append("|");
 
         for (String field : fields) {
             if (!StringUtils.isEmpty(field)) {
-                result += field;
+                result.append(field);
             }
 
-            result+= "|";
+            result.append("|");
         }
 
-        result += "ETX";
-        result += "LRC";
+        result.append("ETX");
+        result.append("LRC");
 
-        return result;
+        return result.toString();
     }
 }
