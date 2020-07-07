@@ -46,7 +46,8 @@ public class SaltoCommand {
         }
     }
 
-    public String toString(){
+    @Override
+    public String toString() {
         StringBuilder result = new StringBuilder();
         result.append("STX");
         result.append("|");
