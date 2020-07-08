@@ -31,10 +31,10 @@ public class SaltoDate {
 
         CardRequest cardRequest = new CardRequest();
         cardRequest.setCardsAmount(1);
-        cardRequest.setGuestName("MR. Andy");
-        cardRequest.setRoom("467");
-        cardRequest.setStartDate(1545140402L);
-        cardRequest.setEndDate(1745140402L);
+        cardRequest.setGuestName("Roberto");
+        cardRequest.setRoom("3");
+        cardRequest.setStartDate(15452576402L);
+        cardRequest.setEndDate(17984140402L);
 
         CardRequestConverter cardRequestConverter = new CardRequestConverter();
 
@@ -42,6 +42,6 @@ public class SaltoDate {
 
         System.out.println(saltoCommand.toString());
 
-        SaltoClient.execute("localhost", 6868, saltoCommand);
+        SaltoClient.execute("localhost", 7878, saltoCommand);
     }
 }

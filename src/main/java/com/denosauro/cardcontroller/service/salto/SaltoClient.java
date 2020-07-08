@@ -36,10 +36,7 @@ public class SaltoClient {
             int answer = reader.read();
 
             if (answer == SaltoConstants.ACK) {
-                writer.writeInt(message.length);
-                if (message.length > 0) {
-                    writer.write(message, 0, message.length);
-                }
+                writer.write(message, 0, message.length);
                 System.out.println("Command send is done!");
             }
 
