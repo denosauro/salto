@@ -13,6 +13,5 @@ import org.springframework.stereotype.Component;
 public class SaltoProperties {
 
     private String host;
-
     private Integer port;
 }
