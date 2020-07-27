@@ -1,17 +1,22 @@
 package com.denosauro.cardcontroller.controller;
 
 import com.denosauro.cardcontroller.dto.CardRequest;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.denosauro.cardcontroller.service.salto.SaltoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.*;
+
 
 @RestController
-@RequestMapping("/card")
+@RequestMapping(value = "/card", method = RequestMethod.POST)
 public class CardController {
-    
-    @PostMapping
-    public void encodeCard(@RequestBody CardRequest request) {
-        
+
+    @Autowired
+    private SaltoService service;
+
+    @GetMapping
+    public void encodeCard(@RequestBody CardRequest request) throws IOException {
+        service.encodeCard(request);
     }
 }
